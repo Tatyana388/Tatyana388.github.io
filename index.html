@@ -1,0 +1,1998 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Портфолио учителя физики — Гулецкая Т.П.</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  :root {
+    --brown-dark: #6B4423;
+    --brown: #8B6F47;
+    --brown-light: #A0826D;
+    --beige: #D4B896;
+    --cream: #FAF6F0;
+    --white: #FFFFFF;
+    --accent: #C9A57B;
+    --text: #3E2A14;
+    --shadow: 0 4px 12px rgba(107, 68, 35, 0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* ===== ЭКРАН ВХОДА ===== */
+  #login-screen {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, var(--brown-dark), var(--brown));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+
+  .login-box {
+    background: var(--white);
+    padding: 40px 50px;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    width: 90%;
+    max-width: 420px;
+    text-align: center;
+  }
+
+  .login-box h1 {
+    color: var(--brown-dark);
+    margin-bottom: 10px;
+    font-size: 1.6rem;
+  }
+
+  .login-box p {
+    color: var(--brown);
+    margin-bottom: 25px;
+    font-size: 0.95rem;
+  }
+
+  .login-box input {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: 2px solid var(--beige);
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+  }
+
+  .login-box input:focus {
+    outline: none;
+    border-color: var(--brown);
+  }
+
+  .login-box button {
+    width: 100%;
+    padding: 12px;
+    background: var(--brown);
+    color: var(--white);
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .login-box button:hover {
+    background: var(--brown-dark);
+    transform: translateY(-2px);
+  }
+
+  .login-error {
+    color: #c0392b;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    min-height: 20px;
+  }
+
+  .login-hint {
+    margin-top: 20px;
+    font-size: 0.8rem;
+    color: var(--brown-light);
+    border-top: 1px solid var(--beige);
+    padding-top: 15px;
+  }
+
+  /* ===== МОДАЛЬНЫЕ ОКНА ===== */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(62, 42, 20, 0.7);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    animation: fadeIn 0.3s;
+  }
+
+  .modal-box {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    animation: modalPop 0.4s;
+  }
+
+  @keyframes modalPop {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+
+  .modal-box h3 {
+    color: var(--brown-dark);
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+  }
+
+  .modal-box p {
+    color: var(--brown);
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+  }
+
+  .modal-box input {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 10px 0;
+    border: 2px solid var(--beige);
+    border-radius: 10px;
+    font-size: 1rem;
+  }
+
+  .modal-box input:focus {
+    outline: none;
+    border-color: var(--brown);
+  }
+
+  .modal-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 15px;
+  }
+
+  .modal-btn-primary {
+    background: var(--brown);
+    color: var(--white);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+  }
+
+  .modal-btn-primary:hover {
+    background: var(--brown-dark);
+  }
+
+  .modal-btn-cancel {
+    background: var(--beige);
+    color: var(--brown-dark);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+  }
+
+  .modal-btn-cancel:hover {
+    background: var(--brown-light);
+    color: var(--white);
+  }
+
+  /* ===== ШАПКА ===== */
+  header {
+    background: linear-gradient(135deg, var(--brown-dark), var(--brown));
+    color: var(--white);
+    padding: 20px 40px;
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 0.95rem;
+  }
+
+  .user-info button {
+    background: var(--beige);
+    color: var(--brown-dark);
+    border: none;
+    padding: 6px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+  }
+
+  .user-info button:hover {
+    background: var(--white);
+  }
+
+  nav {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+
+  nav button {
+    background: rgba(255,255,255,0.1);
+    color: var(--white);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 10px 18px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.4s;
+    opacity: 0;
+    transform: translateY(-20px) scale(0.8);
+    animation: navAppear 0.6s forwards;
+  }
+
+  nav button:nth-child(1) { animation-delay: 0.1s; }
+  nav button:nth-child(2) { animation-delay: 0.15s; }
+  nav button:nth-child(3) { animation-delay: 0.2s; }
+  nav button:nth-child(4) { animation-delay: 0.25s; }
+  nav button:nth-child(5) { animation-delay: 0.3s; }
+  nav button:nth-child(6) { animation-delay: 0.35s; }
+  nav button:nth-child(7) { animation-delay: 0.4s; }
+  nav button:nth-child(8) { animation-delay: 0.45s; }
+
+  @keyframes navAppear {
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  nav button:hover, nav button.active {
+    background: var(--beige);
+    color: var(--brown-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  }
+
+  /* ===== ОСНОВНОЙ КОНТЕНТ ===== */
+  main {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+
+  .section {
+    display: none;
+    animation: fadeIn 0.5s;
+  }
+
+  .section.active {
+    display: block;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  h2 {
+    color: var(--brown-dark);
+    font-size: 2rem;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--beige);
+  }
+
+  h3 {
+    color: var(--brown);
+    margin: 20px 0 10px;
+  }
+
+  .card {
+    background: var(--white);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+    border-left: 5px solid var(--brown);
+    transition: all 0.3s;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(107, 68, 35, 0.18);
+    border-left-color: var(--brown-dark);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 30px;
+    align-items: start;
+  }
+
+  .photo-frame {
+    background: var(--white);
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    text-align: center;
+  }
+
+  .photo-frame img {
+    width: 100%;
+    border-radius: 10px;
+    background: var(--beige);
+    height: auto;
+    object-fit: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--brown);
+    font-size: 5rem;
+  }
+
+  .photo-frame p {
+    margin-top: 10px;
+    color: var(--brown);
+    font-weight: 600;
+  }
+
+  .materials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  .material-card {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    border-top: 4px solid var(--brown);
+    transition: all 0.3s;
+  }
+
+  .material-card:hover {
+    transform: translateY(-5px);
+    border-top-color: var(--brown-dark);
+  }
+
+  .material-card .tag {
+    display: inline-block;
+    background: var(--beige);
+    color: var(--brown-dark);
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .material-card h4 {
+    color: var(--brown-dark);
+    margin-bottom: 8px;
+  }
+
+  .material-card a {
+    display: inline-block;
+    margin-top: 10px;
+    color: var(--brown);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 2px solid var(--beige);
+    transition: all 0.3s;
+  }
+
+  .material-card a:hover {
+    color: var(--brown-dark);
+    border-bottom-color: var(--brown-dark);
+  }
+
+  .theory-block {
+    background: linear-gradient(135deg, var(--white), var(--cream));
+    padding: 25px;
+    border-radius: 15px;
+    border-left: 5px solid var(--brown);
+    margin-bottom: 20px;
+  }
+
+  .theory-block h3 {
+    color: var(--brown-dark);
+    margin-bottom: 10px;
+  }
+
+  .formula {
+    background: var(--beige);
+    padding: 10px 15px;
+    border-radius: 8px;
+    display: inline-block;
+    margin: 8px 0;
+    font-weight: 600;
+    color: var(--brown-dark);
+    font-family: 'Courier New', monospace;
+  }
+
+  .task-box {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    margin-bottom: 15px;
+  }
+
+  .task-box .task-label {
+    display: inline-block;
+    background: var(--brown);
+    color: var(--white);
+    padding: 3px 12px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .task-box .task-label.hard { background: #c0392b; }
+  .task-box .task-label.medium { background: #d35400; }
+
+  .task-box .task-text {
+    font-size: 1.05rem;
+    margin-bottom: 15px;
+    color: var(--text);
+  }
+
+  .task-box input {
+    padding: 10px 15px;
+    border: 2px solid var(--beige);
+    border-radius: 8px;
+    font-size: 1rem;
+    width: 150px;
+    margin-right: 10px;
+  }
+
+  .task-box input:focus {
+    outline: none;
+    border-color: var(--brown);
+  }
+
+  .task-box button {
+    padding: 10px 20px;
+    background: var(--brown);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+    margin-right: 5px;
+    margin-top: 5px;
+  }
+
+  .task-box button:hover:not(:disabled) {
+    background: var(--brown-dark);
+  }
+
+  .task-box button:disabled {
+    background: #bbb;
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  .task-box .hint-btn {
+    background: var(--beige);
+    color: var(--brown-dark);
+  }
+
+  .task-box .hint-btn:hover:not(:disabled) {
+    background: var(--brown-light);
+    color: var(--white);
+  }
+
+  .feedback {
+    margin-top: 12px;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-weight: 500;
+    min-height: 20px;
+  }
+
+  .feedback.correct {
+    background: #d4edda;
+    color: #155724;
+    border-left: 4px solid #28a745;
+  }
+
+  .feedback.wrong {
+    background: #f8d7da;
+    color: #721c24;
+    border-left: 4px solid #dc3545;
+  }
+
+  .feedback.hint {
+    background: #fff3cd;
+    color: #856404;
+    border-left: 4px solid #ffc107;
+  }
+
+  .feedback.info {
+    background: #e7f1ff;
+    color: #0c5460;
+    border-left: 4px solid #17a2b8;
+  }
+
+  .simulation-container {
+    background: var(--white);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+  }
+
+  .sim-svg {
+    width: 100%;
+    max-width: 700px;
+    margin: 20px auto;
+    display: block;
+    background: var(--cream);
+    border-radius: 10px;
+  }
+
+  .sim-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 15px 0;
+    align-items: center;
+  }
+
+  .sim-controls label {
+    font-weight: 600;
+    color: var(--brown-dark);
+  }
+
+  .sim-controls input[type="range"] {
+    flex: 1;
+    min-width: 150px;
+    accent-color: var(--brown);
+  }
+
+  .sim-status {
+    padding: 12px 18px;
+    border-radius: 10px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 15px;
+  }
+
+  .sim-status.balanced {
+    background: #d4edda;
+    color: #155724;
+  }
+
+  .sim-status.unbalanced {
+    background: #f8d7da;
+    color: #721c24;
+  }
+
+  .sim-status.info {
+    background: var(--beige);
+    color: var(--brown-dark);
+  }
+
+  .sim-info-card {
+    background: var(--cream);
+    padding: 12px 15px;
+    border-radius: 10px;
+    text-align: center;
+    border-left: 4px solid var(--brown);
+  }
+
+  .sim-info-card .val {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--brown-dark);
+  }
+
+  .sim-info-card .lbl {
+    font-size: 0.85rem;
+    color: var(--brown);
+    margin-top: 3px;
+  }
+
+  .test-container {
+    background: var(--white);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+  }
+
+  .question {
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px dashed var(--beige);
+  }
+
+  .question:last-child { border-bottom: none; }
+
+  .question p {
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--brown-dark);
+  }
+
+  .question label {
+    display: block;
+    padding: 10px 15px;
+    margin: 5px 0;
+    background: var(--cream);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 2px solid transparent;
+  }
+
+  .question label:hover {
+    background: var(--beige);
+  }
+
+  .question input[type="radio"] {
+    margin-right: 10px;
+    accent-color: var(--brown);
+  }
+
+  .test-result {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    font-weight: 600;
+    text-align: center;
+    font-size: 1.1rem;
+  }
+
+  .submit-test {
+    background: var(--brown);
+    color: var(--white);
+    border: none;
+    padding: 12px 30px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: all 0.3s;
+  }
+
+  .submit-test:hover {
+    background: var(--brown-dark);
+    transform: translateY(-2px);
+  }
+
+  .test-user-banner {
+    background: linear-gradient(135deg, var(--beige), var(--accent));
+    padding: 15px 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .test-user-banner strong {
+    color: var(--brown-dark);
+    font-size: 1.05rem;
+  }
+
+  .test-user-banner button {
+    background: var(--brown-dark);
+    color: var(--white);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+  }
+
+  .test-user-banner button:hover {
+    background: var(--brown);
+  }
+
+  .results-table {
+    width: 100%;
+    background: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+
+  .results-table th {
+    background: var(--brown-dark);
+    color: var(--white);
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: 600;
+  }
+
+  .results-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid var(--beige);
+  }
+
+  .results-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .results-table tr:nth-child(even) {
+    background: var(--cream);
+  }
+
+  .results-table .percent-good { color: #155724; font-weight: 700; }
+  .results-table .percent-mid { color: #856404; font-weight: 700; }
+  .results-table .percent-bad { color: #721c24; font-weight: 700; }
+
+  .visit-log {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    max-height: 400px;
+    overflow-y: auto;
+  }
+
+  .visit-entry {
+    padding: 10px 15px;
+    border-left: 3px solid var(--brown);
+    margin-bottom: 8px;
+    background: var(--cream);
+    border-radius: 5px;
+    font-size: 0.95rem;
+  }
+
+  .visit-entry strong { color: var(--brown-dark); }
+
+  footer {
+    background: var(--brown-dark);
+    color: var(--beige);
+    text-align: center;
+    padding: 25px;
+    margin-top: 50px;
+  }
+
+  footer a {
+    color: var(--white);
+    text-decoration: none;
+  }
+
+  @media (max-width: 768px) {
+    .about-grid { grid-template-columns: 1fr; }
+    header { padding: 15px 20px; }
+    .logo { font-size: 1.2rem; }
+    h2 { font-size: 1.5rem; }
+    nav button { padding: 8px 14px; font-size: 0.85rem; }
+    .results-table { font-size: 0.85rem; }
+    .results-table th, .results-table td { padding: 8px 10px; }
+  }
+
+    /* Стили для симуляции с перетаскиванием */
+  .warehouse-load {
+    transition: transform 0.2s;
+  }
+  .warehouse-load:hover {
+    transform: scale(1.05);
+  }
+  #dragging-load rect {
+    cursor: grabbing;
+  }
+  .lever-load-item {
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  .lever-load-item:hover {
+    opacity: 0.8;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ===== ЭКРАН ВХОДА ===== -->
+<div id="login-screen">
+  <div class="login-box">
+    <h1>🔐 Вход на сайт</h1>
+    <p>Портфолио учителя физики<br>Гулецкая Татьяна Павловна</p>
+    <input type="text" id="login-name" placeholder="Введите ваше ФИ">
+    <input type="password" id="login-password" placeholder="Введите пароль">
+    <button onclick="checkLogin()">Войти</button>
+    <div class="login-error" id="login-error"></div>
+    <div class="login-hint">
+      Пароль для доступа: <strong>physics2026</strong>
+    </div>
+  </div>
+</div>
+
+<!-- ===== МОДАЛКА: ПАРОЛЬ АДМИНА ===== -->
+<div id="password-modal" class="modal-overlay">
+  <div class="modal-box">
+    <h3>🔒 Защищённый раздел</h3>
+    <p>Введите пароль администратора для доступа:</p>
+    <input type="password" id="admin-password-input" placeholder="Пароль">
+    <div class="login-error" id="password-error"></div>
+    <div class="modal-buttons">
+      <button class="modal-btn-cancel" onclick="closeModal('password-modal')">Отмена</button>
+      <button class="modal-btn-primary" onclick="checkAdminPassword()">Войти</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== МОДАЛКА: ФИО ДЛЯ ТЕСТОВ ===== -->
+<div id="name-modal" class="modal-overlay">
+  <div class="modal-box">
+    <h3>📝 Прохождение тестов</h3>
+    <p>Введите ваше ФИ</p>
+    <input type="text" id="test-user-name" placeholder="Иванов Иван ">
+    <div class="login-error" id="name-error"></div>
+    <div class="modal-buttons">
+      <button class="modal-btn-cancel" onclick="closeModal('name-modal')">Отмена</button>
+      <button class="modal-btn-primary" onclick="confirmTestUser()">Начать тест</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ОСНОВНОЙ САЙТ ===== -->
+<div id="main-site" style="display:none;">
+
+<header>
+  <div class="header-top">
+    <div class="logo">⚛️ Физика · 9 класс</div>
+    <div class="user-info">
+      <span id="user-display"></span>
+      <button onclick="logout()">Выйти</button>
+    </div>
+  </div>
+  <nav id="main-nav">
+    <button onclick="showSection('about', this)" class="active">👤 О себе</button>
+    <button onclick="showSection('materials', this)">📚 Методические разработки</button>
+    <button onclick="showSection('teachers', this)">👩‍🏫 Учителям</button>
+    <button onclick="showSection('students', this)">🎓 Учащимся</button>
+    <button onclick="showSection('simulation', this)">🔬 Симуляции</button>
+    <button onclick="openTests(this)">📝 Тесты</button>
+    <button onclick="openProtectedSection('results', this)">📊 Результаты</button>
+    <button onclick="openProtectedSection('log', this)">📋 Журнал</button>
+  </nav>
+</header>
+
+<main>
+
+  <!-- О СЕБЕ -->
+  <section id="about" class="section active">
+    <h2>Обо мне</h2>
+    <div class="about-grid">
+      <div class="photo-frame">
+        <img src="foto.jpg" alt="Фото">
+        <p>Гулецкая Т.П.</p>
+      </div>
+      <div>
+        <div class="card">
+          <h3>👩‍🏫 Гулецкая Татьяна Павловна</h3>
+          <p><strong>Образование:</strong> БГПУ имени Максима Танка, физико-математический факультет</p>
+          <p><strong>Специальность:</strong> Физика и информатика</p>
+          <p><strong>Год окончания:</strong> 2028</p>
+        </div>
+        <div class="card">
+          <h3>💡 Мой подход</h3>
+          <p>Для меня физика - это не набор формул, а способ увидеть, как устроен мир. 
+          <p>В работе с учащимися хочу быть не транслятором, а проводником: задавать вопросы, вместе искать ответы, проверять гипотезы. Моя задача - не дать знания, а разжечь интерес, с которым знания найдутся сами.</p>
+        </div>
+        <div class="card">
+          <h3>📞 Контакты</h3>
+          <p>Email: <a href="mailto:tatyanaguleckayaa@gmail.com">tatyanaguleckayaa@gmail.com</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- МЕТОДИЧЕСКИЕ РАЗРАБОТКИ -->
+  <section id="materials" class="section">
+    <h2>📚 Методические разработки</h2>
+    <p style="margin-bottom:20px;">Разработанные материалы по теме <strong>«Простые механизмы. Рычаги. Блоки»</strong> для 9 класса</p>
+    <div class="materials-grid">
+
+      <div class="material-card">
+        <span class="tag">Мотивационный этап</span>
+        <h4>Банк карточек-приёмов</h4>
+        <p>6 карточек для начала урока: физический парадокс, исторический сюжет, бытовая ситуация, проблемные вопросы.</p>
+        <a href="lab4.pdf" target="_blank">Открыть →</a>
+      </div>
+
+      <div class="material-card">
+        <span class="tag">Изучение нового материала</span>
+        <h4>Видеоресурсы к уроку</h4>
+        <p>Подборка видео и инфоуроков по теме «Простые механизмы» с вопросами для обсуждения.</p>
+        <a href="lab7.pdf" target="_blank">Открыть →</a>
+      </div>
+
+      <div class="material-card">
+        <span class="tag">Закрепление изученного материала</span>
+        <h4>Цифровой рабочий лист</h4>
+        <p>Интерактивные задания для самостоятельной работы в классе</p>
+        <a href="lab10.pdf" target="_blank">Открыть →</a>
+      </div>
+
+      <div class="material-card">
+        <span class="tag">Закрепление изученного материала</span>
+        <h4>Рабочие листы (3 варианта)</h4>
+        <p>Три варианта рабочих листов для контроля: теория, характеристики, практические расчёты.</p>
+        <a href="list.pdf" target="_blank">Открыть →</a>
+      </div>
+
+      <div class="material-card">
+        <span class="tag">Технологическая карта</span>
+        <h4>Технологическая карта урока</h4>
+        <p>Полная технологическая карта урока «Простые механизмы. Рычаги. Блоки» с этапами, целями и деятельностью.</p>
+        <a href="tex.karta.pdf" target="_blank">Открыть →</a>
+      </div>
+
+      <div class="material-card">
+        <span class="tag">Внеклассное мероприятие</span>
+        <h4>Инженерный баттл</h4>
+        <p>Командная игра-защита проектов: 45 минут физики в формате квеста.</p>
+        <a href="vne.class.pdf" target="_blank">Открыть →</a>
+      </div>
+
+      <div class="material-card">
+        <span class="tag">Квест</span>
+        <h4>Квест «Побег из Школы Магии»</h4>
+        <p>Три магических барьера — три задачи на рычаг и блоки. Ступенчатые подсказки-свитки, маршрутные листы, хронометраж 45 минут.</p>
+        <a href="lab13.pdf" target="_blank">Открыть →</a>
+      </div>
+
+      <div class="material-card">
+        <span class="tag">Комплексная задача</span>
+        <h4>Один против тонны</h4>
+        <p>История спасателя МЧС + таблица опроса + 5 заданий на анализ, расчёт и аргументацию.</p>
+        <a href="1-tonn.pdf" target="_blank">Открыть →</a>
+      </div>
+
+      <div class="material-card">
+        <span class="tag">Тест</span>
+        <h4>Момент силы</h4>
+        <p>Тест из 5 вопросов для проверки понимания правила моментов и равновесия рычага.</p>
+        <a href="#" onclick="openTests(document.querySelectorAll('nav button')[5]); return false;">Перейти к тесту →</a>
+      </div>
+
+      <div class="material-card">
+        <span class="tag">Тест</span>
+        <h4>Блоки и полиспаст</h4>
+        <p>Тест по подвижным и неподвижным блокам, выигрышу в силе, «золотому правилу» механики.</p>
+        <a href="#" onclick="openTests(document.querySelectorAll('nav button')[5]); return false;">Перейти к тесту →</a>
+      </div>
+
+      <div class="material-card">
+        <span class="tag">Тест</span>
+        <h4>Итоговый тест по теме</h4>
+        <p>Комплексный тест из 5 вопросов по всему параграфу «Простые механизмы».</p>
+        <a href="#" onclick="openTests(document.querySelectorAll('nav button')[5]); return false;">Перейти к тесту →</a>
+      </div>
+
+      <div class="material-card">
+        <span class="tag">Симуляция</span>
+        <h4>Интерактивная симуляция рычага</h4>
+        <p>Визуальная модель рычага с возможностью менять силы и плечи.</p>
+        <a href="#" onclick="showSection('simulation', document.querySelectorAll('nav button')[4]); return false;">Открыть →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- УЧИТЕЛЯМ -->
+  <section id="teachers" class="section">
+    <h2>👩‍🏫 Учителям</h2>
+    <p style="margin-bottom:20px;">Материалы для организации урока по теме «Простые механизмы. Рычаги. Блоки».</p>
+
+    <div class="card">
+      <h3>🎯 Цели урока</h3>
+      <ul style="margin-left:20px;">
+        <li><b>Образовательная:</b> ввести понятия «рычаг», «плечо силы», «блок», «момент силы»; объяснить правило моментов.</li>
+        <li><b>Развивающая:</b> развивать логическое мышление, умение анализировать бытовые ситуации.</li>
+        <li><b>Воспитательная:</b> показать практическую значимость физики в технике и повседневной жизни.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>🎪 Пример этапа урока: мотивация через физический парадокс</h3>
+      <p><b>Время:</b> 5 минут в начале урока.</p>
+      <p><b>Оборудование:</b> книга, длинная линейка, ластик (опора).</p>
+      <p style="margin-top:10px;"><b>Ход приёма:</b></p>
+      <ol style="margin-left:20px; margin-top:8px;">
+        <li>Учитель кладёт на стол книгу и предлагает ученику поднять её <b>одним пальцем</b>, используя только линейку и ластик.</li>
+        <li>Ученик с удивлением обнаруживает, что это легко.</li>
+        <li>Класс обсуждает: «Почему получилось? Что мы использовали?»</li>
+        <li>Ожидаемые ответы: «Это рычаг», «Точка опоры - ластик», «Линейка работает как рычаг».</li>
+        <li><b>Переход к теме:</b> «Верно, мы использовали простейший механизм - рычаг. Сегодня мы выясним, как он работает и какое правило лежит в основе его действия».</li>
+      </ol>
+      <p style="margin-top:10px;"><a href="lab4.pdf" target="_blank" style="color:var(--brown); font-weight:600;">📎 Полный банк из 6 карточек-приёмов →</a></p>
+    </div>
+
+    <div class="card">
+      <h3>📂 Все материалы для скачивания</h3>
+      <ul style="margin-left:20px;">
+        <li><a href="lab4.pdf" target="_blank">Карточки для мотивационного этапа</a></li>
+        <li><a href="lab7.pdf" target="_blank">Видеоресурсы к уроку</a></li>
+        <li><a href="list.pdf" target="_blank">Рабочие листы - 3 варианта</a></li>
+        <li><a href="tex.karta.pdf" target="_blank">Технологическая карта урока</a></li>
+        <li><a href="vne.class.pdf" target="_blank">Внеклассное мероприятие «Инженерный баттл»</a></li>
+        <li><a href="lab13.pdf" target="_blank">Квест «Побег из Школы Магии»</a></li>
+        <li><a href="1-tonn.pdf" target="_blank">Комплексная задача «Один против тонны»</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- УЧАЩИМСЯ -->
+  <section id="students" class="section">
+    <h2>🎓 Учащимся</h2>
+    <p style="margin-bottom:20px;">💡Решай в своём темпе!</p>
+
+    <div class="theory-block">
+      <h3>📘 Что такое рычаг?</h3>
+      <p><b>Рычаг</b> — это твёрдое тело, которое может вращаться вокруг неподвижной опоры.</p>
+      <p><b>Плечо силы (l)</b> — кратчайшее расстояние от оси вращения до линии действия силы.</p>
+      <p><b>Момент силы (M)</b> — физическая величина, равная произведению силы на её плечо:</p>
+      <div class="formula">M = F · l &nbsp;&nbsp; [M] = Н · м</div>
+      <p><b>Правило равновесия рычага:</b></p>
+      <div class="formula">F₁ · l₁ = F₂ · l₂ &nbsp;&nbsp; или &nbsp;&nbsp; M₁ = M₂</div>
+    </div>
+
+    <div class="task-box">
+      <div class="task-text"><b>Задача 1.</b> Сила F₁ = 20 Н действует на плечо l₁ = 0,4 м. Чему равен момент силы?</div>
+      <input type="number" id="task1-input" placeholder="Ответ">
+      <span>Н · м</span><br><br>
+      <button onclick="checkTask(1, 8)">Проверить</button>
+      <button class="hint-btn" id="hint-btn-1" onclick="showHint(1)" disabled>💡 Подсказка</button>
+      <button class="hint-btn" onclick="resetTask(1)">🔄 Попробовать ещё раз</button>
+      <div class="feedback" id="task1-feedback"></div>
+    </div>
+
+    <div class="task-box">
+      <div class="task-text"><b>Задача 2.</b> На рычаг действует сила F₁ = 15 Н с плечом l₁ = 0,2 м. Какая сила уравновесит его на плече l₂ = 0,6 м?</div>
+      <input type="number" id="task2-input" placeholder="Ответ">
+      <span>Н</span><br><br>
+      <button onclick="checkTask(2, 5)">Проверить</button>
+      <button class="hint-btn" id="hint-btn-2" onclick="showHint(2)" disabled>💡 Подсказка</button>
+      <button class="hint-btn" onclick="resetTask(2)">🔄 Попробовать ещё раз</button>
+      <div class="feedback" id="task2-feedback"></div>
+    </div>
+
+    <div class="theory-block">
+      <h3>📗 Блоки</h3>
+      <p><b>Неподвижный блок</b> — ось закреплена. <b>Не даёт выигрыша в силе</b>, но меняет её направление.</p>
+      <p><b>Подвижный блок</b> — ось перемещается вместе с грузом. <b>Даёт выигрыш в силе в 2 раза</b>.</p>
+      <p><b>Золотое правило механики:</b> во сколько раз выигрываем в силе, во столько раз проигрываем в расстоянии. Ни один механизм не даёт выигрыша в работе.</p>
+    </div>
+
+    <div class="task-box">
+      <div class="task-text"><b>Задача 3.</b> С помощью подвижного блока поднимают груз массой 40 кг. Какую силу прикладывают к свободному концу троса? (g = 10 Н/кг, весом блока и трением пренебречь)</div>
+      <input type="number" id="task3-input" placeholder="Ответ">
+      <span>Н</span><br><br>
+      <button onclick="checkTask(3, 200)">Проверить</button>
+      <button class="hint-btn" id="hint-btn-3" onclick="showHint(3)" disabled>💡 Подсказка</button>
+      <button class="hint-btn" onclick="resetTask(3)">🔄 Попробовать ещё раз</button>
+      <div class="feedback" id="task3-feedback"></div>
+    </div>
+
+    <div class="task-box">
+      <div class="task-text"><b>Задача 4.</b> К концам невесомого рычага длиной 1 м подвешены грузы массами 2 кг и 8 кг. На каком расстоянии от меньшего груза находится точка опоры?</div>
+      <input type="number" step="0.01" id="task4-input" placeholder="Ответ">
+      <span>м</span><br><br>
+      <button onclick="checkTask(4, 0.8)">Проверить</button>
+      <button class="hint-btn" id="hint-btn-4" onclick="showHint(4)" disabled>💡 Подсказка</button>
+      <button class="hint-btn" onclick="resetTask(4)">🔄 Попробовать ещё раз</button>
+      <div class="feedback" id="task4-feedback"></div>
+    </div>
+
+    <div class="theory-block">
+      <h3>📙 Рычаг</h3>
+      <p><b>Рычаг первого рода</b> — точка опоры всегда располагается между точками приложения усилия и нагрузки. Силы при этом направлены в одну сторону (ножницы, качели, лом).</p>
+      <p><b>Рычаг второго рода</b> — точка опоры находится на одном конце, нагрузка — между точкой опоры и точкой приложения усилия, а усилие прикладывается к другому концу. Силы направлены противоположно друг другу (тачка, щипцы для колки орехов).</p>
+      <p><b>Полиспаст</b> — система из нескольких подвижных и неподвижных блоков. Если n веревок держат подвижный блок, выигрыш в силе = n.</p>
+    </div>
+
+    <div class="task-box">
+      <div class="task-text"><b>Задача 5.</b> Рабочий везёт тачку с грузом массой 60 кг. Расстояние от колеса (опоры) до центра груза — 0,3 м, а до рук рабочего — 1,2 м. Какую силу нужно прикладывать к ручкам, чтобы везти тачку равномерно? (g = 10 Н/кг)</div>
+      <input type="number" id="task5-input" placeholder="Ответ">
+      <span>Н</span><br><br>
+      <button onclick="checkTask(5, 150)">Проверить</button>
+      <button class="hint-btn" id="hint-btn-5" onclick="showHint(5)" disabled>💡 Подсказка</button>
+      <button class="hint-btn" onclick="resetTask(5)">🔄 Попробовать ещё раз</button>
+      <div class="feedback" id="task5-feedback"></div>
+    </div>
+
+    <div class="task-box">
+      <div class="task-text"><b>Задача 6.</b> На рычаг действуют три силы: F₁ = 10 Н на плече l₁ = 0,6 м (вращает по часовой), F₂ = 20 Н на плече l₂ = 0,2 м (тоже по часовой). Какую силу F₃ нужно приложить на плече l₃ = 0,5 м, чтобы рычаг был в равновесии (вращение против часовой)?</div>
+      <input type="number" id="task6-input" placeholder="Ответ">
+      <span>Н</span><br><br>
+      <button onclick="checkTask(6, 2)">Проверить</button>
+      <button class="hint-btn" id="hint-btn-6" onclick="showHint(6)" disabled>💡 Подсказка</button>
+      <button class="hint-btn" onclick="resetTask(6)">🔄 Попробовать ещё раз</button>
+      <div class="feedback" id="task6-feedback"></div>
+    </div>
+
+    <div class="task-box">
+      <div class="task-text"><b>Задача 7.</b> В системе блоков (полиспасте) подвижные блоки удерживают груз, и этот груз висит на 4 верёвках. Какую силу нужно приложить, чтобы поднять груз массой 80 кг? (g = 10 Н/кг, трением и весом блоков пренебречь)</div>
+      <input type="number" id="task7-input" placeholder="Ответ">
+      <span>Н</span><br><br>
+      <button onclick="checkTask(7, 200)">Проверить</button>
+      <button class="hint-btn" id="hint-btn-7" onclick="showHint(7)" disabled>💡 Подсказка</button>
+      <button class="hint-btn" onclick="resetTask(7)">🔄 Попробовать ещё раз</button>
+      <div class="feedback" id="task7-feedback"></div>
+    </div>
+
+    <div class="task-box">
+      <span class="task-label hard">Сложная</span>
+      <div class="task-text"><b>Задача 8.</b> Спасатель использует лом как рычаг, чтобы приподнять бетонную плиту массой 200 кг. Плечо силы, которую он прикладывает, в 8 раз больше плеча веса плиты. Какую силу (в Н) нужно приложить спасателю? (g = 10 Н/кг)</div>
+      <input type="number" id="task8-input" placeholder="Ответ">
+      <span>Н</span><br><br>
+      <button onclick="checkTask(8, 250)">Проверить</button>
+      <button class="hint-btn" id="hint-btn-8" onclick="showHint(8)" disabled>💡 Подсказка</button>
+      <button class="hint-btn" onclick="resetTask(8)">🔄 Попробовать ещё раз</button>
+      <div class="feedback" id="task8-feedback"></div>
+    </div>
+
+  </section>
+
+  <!-- СИМУЛЯЦИИ -->
+  <section id="simulation" class="section">
+    <h2>🔬 Интерактивные симуляции</h2>
+
+    <!-- Симуляция рычага -->
+    <div class="simulation-container">
+      <h3>⚖️ Симуляция рычага</h3>
+      <p>Меняй силы и плечи — наблюдай, при каком условии рычаг в равновесии.</p>
+
+      <svg class="sim-svg" viewBox="0 0 700 300" id="lever-svg">
+        <polygon points="350,250 320,290 380,290" fill="#6B4423"/>
+        <line id="lever-beam" x1="100" y1="200" x2="600" y2="200" stroke="#8B6F47" stroke-width="10" stroke-linecap="round"/>
+        <circle id="left-weight" cx="200" cy="200" r="25" fill="#A0826D"/>
+        <text id="left-text" x="200" y="205" text-anchor="middle" fill="white" font-weight="bold" font-size="14">F₁</text>
+        <circle id="right-weight" cx="500" cy="200" r="25" fill="#A0826D"/>
+        <text id="right-text" x="500" y="205" text-anchor="middle" fill="white" font-weight="bold" font-size="14">F₂</text>
+        <line x1="200" y1="230" x2="350" y2="230" stroke="#6B4423" stroke-width="2" stroke-dasharray="4"/>
+        <text id="l1-label" x="275" y="248" text-anchor="middle" fill="#6B4423" font-size="13">l₁ = 1,5 м</text>
+        <line x1="350" y1="230" x2="500" y2="230" stroke="#6B4423" stroke-width="2" stroke-dasharray="4"/>
+        <text id="l2-label" x="425" y="248" text-anchor="middle" fill="#6B4423" font-size="13">l₂ = 1,5 м</text>
+      </svg>
+
+      <div class="sim-controls">
+        <label>Сила F₁ (Н):</label>
+        <input type="range" id="f1" min="10" max="100" value="30" oninput="updateLever()">
+        <span id="f1-val">30</span>
+
+        <label>Плечо l₁ (м):</label>
+        <input type="range" id="l1" min="0.5" max="3" step="0.1" value="1.5" oninput="updateLever()">
+        <span id="l1-val">1.5</span>
+      </div>
+
+      <div class="sim-controls">
+        <label>Сила F₂ (Н):</label>
+        <input type="range" id="f2" min="10" max="100" value="30" oninput="updateLever()">
+        <span id="f2-val">30</span>
+
+        <label>Плечо l₂ (м):</label>
+        <input type="range" id="l2" min="0.5" max="3" step="0.1" value="1.5" oninput="updateLever()">
+        <span id="l2-val">1.5</span>
+      </div>
+
+      <div class="sim-status" id="lever-status">M₁ = 45 Н·м, M₂ = 45 Н·м — РЫЧАГ В РАВНОВЕСИИ ✓</div>
+
+      <div class="task-box" style="margin-top:20px;">
+        <div class="task-text"><b>Задание к симуляции:</b> Установи F₁ = 40 Н, l₁ = 1 м. Подбери такое F₂ при l₂ = 2 м, чтобы рычаг был в равновесии. Какое значение F₂ получилось?</div>
+        <input type="number" id="tasksim-input" placeholder="Ответ">
+        <span>Н</span><br><br>
+        <button onclick="checkTask('sim', 20)">Проверить</button>
+        <button class="hint-btn" id="hint-btn-sim" onclick="showHint('sim')" disabled>💡 Подсказка</button>
+        <button class="hint-btn" onclick="resetTask('sim')">🔄 Попробовать ещё раз</button>
+        <div class="feedback" id="tasksim-feedback"></div>
+      </div>
+    </div>
+
+       
+       <!-- Симуляция рычага с перетаскиванием грузов (УВЕЛИЧЕННАЯ) -->
+    <div class="simulation-container">
+      <h3>🧪 Симуляция: Собери свой рычаг</h3>
+      <p>Перетащи грузы мышкой на рычаг. Двойной клик по грузу на рычаге — убрать его обратно. Наблюдай, как меняется равновесие!</p>
+
+      <svg class="sim-svg" viewBox="0 0 900 500" id="drag-lever-svg" style="user-select:none; max-width:900px;">
+        <!-- Фон-склад грузов -->
+        <rect x="10" y="10" width="170" height="480" fill="#f5ede3" rx="12" stroke="#D4B896" stroke-width="3"/>
+        <text x="95" y="45" text-anchor="middle" fill="#6B4423" font-weight="bold" font-size="18">📦 СКЛАД ГРУЗОВ</text>
+        <text x="95" y="70" text-anchor="middle" fill="#8B6F47" font-size="13">(перетащи на рычаг)</text>
+
+        <!-- Грузы на складе (шаблоны) - УВЕЛИЧЕНЫ -->
+        <g id="warehouse-loads">
+          <g class="warehouse-load" data-mass="10" style="cursor:grab;">
+            <rect x="25" y="90" width="140" height="65" fill="#A0826D" rx="10" stroke="#6B4423" stroke-width="3"/>
+            <text x="95" y="130" text-anchor="middle" fill="white" font-weight="bold" font-size="22">10 кг</text>
+          </g>
+          <g class="warehouse-load" data-mass="20" style="cursor:grab;">
+            <rect x="25" y="170" width="140" height="65" fill="#8B6F47" rx="10" stroke="#6B4423" stroke-width="3"/>
+            <text x="95" y="210" text-anchor="middle" fill="white" font-weight="bold" font-size="22">20 кг</text>
+          </g>
+          <g class="warehouse-load" data-mass="30" style="cursor:grab;">
+            <rect x="25" y="250" width="140" height="65" fill="#6B4423" rx="10" stroke="#3E2A14" stroke-width="3"/>
+            <text x="95" y="290" text-anchor="middle" fill="white" font-weight="bold" font-size="22">30 кг</text>
+          </g>
+          <g class="warehouse-load" data-mass="50" style="cursor:grab;">
+            <rect x="25" y="330" width="140" height="65" fill="#3E2A14" rx="10" stroke="#2a1a0c" stroke-width="3"/>
+            <text x="95" y="370" text-anchor="middle" fill="white" font-weight="bold" font-size="22">40 кг</text>
+          </g>
+        </g>
+
+        <!-- Кнопка "Очистить рычаг" -->
+        <rect x="25" y="420" width="140" height="40" fill="#c0392b" rx="8" style="cursor:pointer;" onclick="clearLeverLoads()"/>
+        <text x="95" y="447" text-anchor="middle" fill="white" font-weight="bold" font-size="16" style="pointer-events:none;">🗑️ Очистить</text>
+
+        <!-- Опора рычага (УВЕЛИЧЕНА) -->
+        <polygon points="450,320 410,390 490,390" fill="#6B4423"/>
+        <text x="450" y="415" text-anchor="middle" fill="#6B4423" font-size="14" font-weight="600">точка опоры</text>
+
+        <!-- Рычаг (балка) - УВЕЛИЧЕНА -->
+        <g id="lever-beam-group">
+          <line id="lever-beam" x1="200" y1="290" x2="700" y2="290" stroke="#8B6F47" stroke-width="16" stroke-linecap="round"/>
+          <!-- Деления на рычаге (5 с каждой стороны) -->
+          <g id="lever-ticks" stroke="#6B4423" stroke-width="3">
+            <line x1="250" y1="282" x2="250" y2="298"/>
+            <line x1="300" y1="282" x2="300" y2="298"/>
+            <line x1="350" y1="282" x2="350" y2="298"/>
+            <line x1="400" y1="282" x2="400" y2="298"/>
+            <line x1="500" y1="282" x2="500" y2="298"/>
+            <line x1="550" y1="282" x2="550" y2="298"/>
+            <line x1="600" y1="282" x2="600" y2="298"/>
+            <line x1="650" y1="282" x2="650" y2="298"/>
+          </g>
+          <!-- Подписи расстояний (БЕЗ ЗНАКОВ МИНУС/ПЛЮС) -->
+          <text x="250" y="315" text-anchor="middle" fill="#6B4423" font-size="14" font-weight="600">4</text>
+          <text x="300" y="315" text-anchor="middle" fill="#6B4423" font-size="14" font-weight="600">3</text>
+          <text x="350" y="315" text-anchor="middle" fill="#6B4423" font-size="14" font-weight="600">2</text>
+          <text x="400" y="315" text-anchor="middle" fill="#6B4423" font-size="14" font-weight="600">1</text>
+          <text x="500" y="315" text-anchor="middle" fill="#6B4423" font-size="14" font-weight="600">1</text>
+          <text x="550" y="315" text-anchor="middle" fill="#6B4423" font-size="14" font-weight="600">2</text>
+          <text x="600" y="315" text-anchor="middle" fill="#6B4423" font-size="14" font-weight="600">3</text>
+          <text x="650" y="315" text-anchor="middle" fill="#6B4423" font-size="14" font-weight="600">4</text>
+        </g>
+
+        <!-- Контейнер для грузов на рычаге -->
+        <g id="lever-loads-group"></g>
+
+        <!-- Перетаскиваемый груз (клон) -->
+        <g id="dragging-load" style="display:none; pointer-events:none;"></g>
+      </svg>
+
+      <div class="sim-info-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:15px; margin-top:20px;">
+        <div class="sim-info-card">
+          <div class="val" id="drag-m1" style="font-size:1.6rem;">0 Н·м</div>
+          <div class="lbl">Момент слева (M₁)</div>
+        </div>
+        <div class="sim-info-card">
+          <div class="val" id="drag-m2" style="font-size:1.6rem;">0 Н·м</div>
+          <div class="lbl">Момент справа (M₂)</div>
+        </div>
+        <div class="sim-info-card">
+          <div class="val" id="drag-status" style="color:#155724; font-size:1.4rem;">РАВНОВЕСИЕ ✓</div>
+          <div class="lbl">Состояние рычага</div>
+        </div>
+      </div>
+
+      <div class="sim-status info" style="margin-top:20px; font-size:1.05rem;">
+        💡 <b>Задание:</b> Расположи грузы так, чтобы рычаг был в равновесии. Помни: M = F · l, где F = m · g (g = 10 Н/кг), а l — расстояние от точки опоры.
+      </div>
+    </div>
+  </section> 
+  <!-- ТЕСТЫ -->
+  <section id="tests" class="section">
+    <h2>📝 Тесты</h2>
+    
+    <div id="test-user-banner" class="test-user-banner" style="display:none;">
+      <strong id="test-user-display"></strong>
+      <button onclick="currentTestUser=''; localStorage.removeItem('currentTestUser'); document.getElementById('test-user-banner').style.display='none';">Сменить пользователя</button>
+    </div>
+
+    <!-- ТЕСТ 1 -->
+    <div class="test-container" style="margin-bottom:25px;">
+      <h3>Тест 1. Момент силы. Равновесие рычага</h3>
+      <div class="question">
+        <p>1. Что называется плечом силы?</p>
+        <label><input type="radio" name="t1q1" value="a"> Сила, приложенная к рычагу</label>
+        <label><input type="radio" name="t1q1" value="b"> Кратчайшее расстояние от оси вращения до линии действия силы</label>
+        <label><input type="radio" name="t1q1" value="c"> Длина рычага</label>
+        <label><input type="radio" name="t1q1" value="d"> Масса груза на рычаге</label>
+      </div>
+      <div class="question">
+        <p>2. По какой формуле вычисляется момент силы?</p>
+        <label><input type="radio" name="t1q2" value="a"> M = F / l</label>
+        <label><input type="radio" name="t1q2" value="b"> M = F · l</label>
+        <label><input type="radio" name="t1q2" value="c"> M = F + l</label>
+        <label><input type="radio" name="t1q2" value="d"> M = l / F</label>
+      </div>
+      <div class="question">
+        <p>3. В каких единицах измеряется момент силы?</p>
+        <label><input type="radio" name="t1q3" value="a"> Н</label>
+        <label><input type="radio" name="t1q3" value="b"> Дж</label>
+        <label><input type="radio" name="t1q3" value="c"> Н · м</label>
+        <label><input type="radio" name="t1q3" value="d"> Па</label>
+      </div>
+      <div class="question">
+        <p>4. Каково условие равновесия рычага?</p>
+        <label><input type="radio" name="t1q4" value="a"> F₁ = F₂</label>
+        <label><input type="radio" name="t1q4" value="b"> l₁ = l₂</label>
+        <label><input type="radio" name="t1q4" value="c"> F₁ · l₁ = F₂ · l₂</label>
+        <label><input type="radio" name="t1q4" value="d"> F₁ + l₁ = F₂ + l₂</label>
+      </div>
+      <div class="question">
+        <p>5. Сила 30 Н действует на плечо 0,2 м. Момент силы равен:</p>
+        <label><input type="radio" name="t1q5" value="a"> 6 Н · м</label>
+        <label><input type="radio" name="t1q5" value="b"> 150 Н · м</label>
+        <label><input type="radio" name="t1q5" value="c"> 0,06 Н · м</label>
+        <label><input type="radio" name="t1q5" value="d"> 30,2 Н · м</label>
+      </div>
+      <button class="submit-test" onclick="checkTest(1)">Проверить тест 1</button>
+      <div class="test-result" id="test1-result"></div>
+    </div>
+
+    <!-- ТЕСТ 2 -->
+    <div class="test-container" style="margin-bottom:25px;">
+      <h3>Тест 2. Блоки. Выигрыш в силе</h3>
+      <div class="question">
+        <p>1. Какой блок даёт выигрыш в силе в 2 раза?</p>
+        <label><input type="radio" name="t2q1" value="a"> Неподвижный</label>
+        <label><input type="radio" name="t2q1" value="b"> Подвижный</label>
+        <label><input type="radio" name="t2q1" value="c"> Любой блок</label>
+        <label><input type="radio" name="t2q1" value="d"> Ни один блок</label>
+      </div>
+      <div class="question">
+        <p>2. Какую роль играет неподвижный блок?</p>
+        <label><input type="radio" name="t2q2" value="a"> Даёт выигрыш в силе</label>
+        <label><input type="radio" name="t2q2" value="b"> Даёт выигрыш в работе</label>
+        <label><input type="radio" name="t2q2" value="c"> Меняет направление силы</label>
+        <label><input type="radio" name="t2q2" value="d"> Уменьшает массу груза</label>
+      </div>
+      <div class="question">
+        <p>3. Подвижный блок даёт выигрыш в силе в 2 раза, но во сколько раз проигрывает в расстоянии?</p>
+        <label><input type="radio" name="t2q3" value="a"> В 2 раза</label>
+        <label><input type="radio" name="t2q3" value="b"> В 4 раза</label>
+        <label><input type="radio" name="t2q3" value="c"> Не проигрывает</label>
+        <label><input type="radio" name="t2q3" value="d"> В 10 раз</label>
+      </div>
+      <div class="question">
+        <p>4. Груз массой 60 кг поднимают с помощью подвижного блока. Какую силу нужно приложить? (g = 10 Н/кг)</p>
+        <label><input type="radio" name="t2q4" value="a"> 600 Н</label>
+        <label><input type="radio" name="t2q4" value="b"> 300 Н</label>
+        <label><input type="radio" name="t2q4" value="c"> 120 Н</label>
+        <label><input type="radio" name="t2q4" value="d"> 60 Н</label>
+      </div>
+      <div class="question">
+        <p>5. Что такое «золотое правило» механики?</p>
+        <label><input type="radio" name="t2q5" value="a"> Во сколько раз выигрываем в силе, во столько проигрываем в расстоянии</label>
+        <label><input type="radio" name="t2q5" value="b"> Простые механизмы дают выигрыш в работе</label>
+        <label><input type="radio" name="t2q5" value="c"> Рычаг всегда равен по длине</label>
+        <label><input type="radio" name="t2q5" value="d"> Блок не меняет направление силы</label>
+      </div>
+      <button class="submit-test" onclick="checkTest(2)">Проверить тест 2</button>
+      <div class="test-result" id="test2-result"></div>
+    </div>
+
+    <!-- ТЕСТ 3 -->
+    <div class="test-container">
+      <h3>Тест 3. Итоговый по теме «Простые механизмы»</h3>
+      <div class="question">
+        <p>1. К простейшим механизмам НЕ относится:</p>
+        <label><input type="radio" name="t3q1" value="a"> Рычаг</label>
+        <label><input type="radio" name="t3q1" value="b"> Блок</label>
+        <label><input type="radio" name="t3q1" value="c"> Двигатель</label>
+        <label><input type="radio" name="t3q1" value="d"> Наклонная плоскость</label>
+      </div>
+      <div class="question">
+        <p>2. Рычаг находится в равновесии, если:</p>
+        <label><input type="radio" name="t3q2" value="a"> Силы равны</label>
+        <label><input type="radio" name="t3q2" value="b"> Плечи равны</label>
+        <label><input type="radio" name="t3q2" value="c"> Моменты сил равны</label>
+        <label><input type="radio" name="t3q2" value="d"> Массы грузов равны</label>
+      </div>
+      <div class="question">
+        <p>3. Дверную ручку крепят у края двери, потому что:</p>
+        <label><input type="radio" name="t3q3" value="a"> Так красивее</label>
+        <label><input type="radio" name="t3q3" value="b"> Увеличивается плечо силы — легче открывать</label>
+        <label><input type="radio" name="t3q3" value="c"> Уменьшается масса двери</label>
+        <label><input type="radio" name="t3q3" value="d"> Так делали в старину</label>
+      </div>
+      <div class="question">
+        <p>4. Система блоков, дающая большой выигрыш в силе, называется:</p>
+        <label><input type="radio" name="t3q4" value="a"> Рычаг</label>
+        <label><input type="radio" name="t3q4" value="b"> Полиспаст</label>
+        <label><input type="radio" name="t3q4" value="c"> Домкрат</label>
+        <label><input type="radio" name="t3q4" value="d"> Ворот</label>
+      </div>
+      <div class="question">
+        <p>5. Даёт ли какой-либо простой механизм выигрыш в работе?</p>
+        <label><input type="radio" name="t3q5" value="a"> Да, рычаг</label>
+        <label><input type="radio" name="t3q5" value="b"> Да, блок</label>
+        <label><input type="radio" name="t3q5" value="c"> Нет, ни один</label>
+        <label><input type="radio" name="t3q5" value="d"> Да, наклонная плоскость</label>
+      </div>
+      <button class="submit-test" onclick="checkTest(3)">Проверить тест 3</button>
+      <div class="test-result" id="test3-result"></div>
+    </div>
+  </section>
+
+  <!-- РЕЗУЛЬТАТЫ -->
+  <section id="results" class="section">
+    <h2>📊 Результаты тестов</h2>
+    <p style="margin-bottom:20px;">Здесь отображаются результаты всех, кто проходил тесты на сайте.</p>
+    <div id="results-container"></div>
+  </section>
+
+  <!-- ЖУРНАЛ ПОСЕЩЕНИЙ -->
+  <section id="log" class="section">
+    <h2>📋 Журнал посещений</h2>
+    <p style="margin-bottom:20px;">Здесь хранится информация о всех, кто заходил на сайт.</p>
+    <div class="visit-log" id="visit-log"></div>
+    <button class="submit-test" style="margin-top:15px; background:#c0392b;" onclick="clearLog()">🗑️ Очистить журнал</button>
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2026 Гулецкая Татьяна Павловна. Портфолио учителя физики.</p>
+  <p>Email: <a href="mailto:tatyanaguleckayaa@gmail.com">tatyanaguleckayaa@gmail.com</a></p>
+</footer>
+
+</div>
+
+<script>
+  // ===== ПАРОЛИ =====
+  const LOGIN_PASSWORD = "physics2026";
+  const ADMIN_PASSWORD = "2007_5";
+
+  // ===== СОСТОЯНИЕ =====
+  const taskAttempted = {};
+  let currentTestUser = localStorage.getItem('currentTestUser') || '';
+  let pendingSection = '';
+
+  // ===== ВХОД НА САЙТ =====
+  function checkLogin() {
+    const name = document.getElementById('login-name').value.trim();
+    const pass = document.getElementById('login-password').value;
+    const err = document.getElementById('login-error');
+
+    if (!name) { err.textContent = "Введите ваше ФИ"; return; }
+    if (pass !== LOGIN_PASSWORD) { err.textContent = "Неверный пароль"; return; }
+
+    const visits = JSON.parse(localStorage.getItem('visitLog') || '[]');
+    visits.push({ name: name, time: new Date().toLocaleString('ru-RU') });
+    localStorage.setItem('visitLog', JSON.stringify(visits));
+    localStorage.setItem('currentUser', name);
+
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('main-site').style.display = 'block';
+    document.getElementById('user-display').textContent = '👤 ' + name;
+  }
+
+  function logout() {
+    localStorage.removeItem('currentUser');
+    location.reload();
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    const user = localStorage.getItem('currentUser');
+    if (user) {
+      document.getElementById('login-screen').style.display = 'none';
+      document.getElementById('main-site').style.display = 'block';
+      document.getElementById('user-display').textContent = '👤 ' + user;
+    }
+    updatePulley(); // Инициализация симуляции полиспаста
+  });
+
+  // ===== НАВИГАЦИЯ =====
+  function showSection(id, btn) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ===== МОДАЛЬНЫЕ ОКНА =====
+  function closeModal(id) {
+    document.getElementById(id).style.display = 'none';
+  }
+
+  function openProtectedSection(sectionId, btn) {
+    pendingSection = sectionId;
+    document.getElementById('password-modal').style.display = 'flex';
+    document.getElementById('admin-password-input').value = '';
+    document.getElementById('password-error').textContent = '';
+    setTimeout(() => document.getElementById('admin-password-input').focus(), 100);
+  }
+
+  function checkAdminPassword() {
+    const pass = document.getElementById('admin-password-input').value;
+    if (pass === ADMIN_PASSWORD) {
+      closeModal('password-modal');
+      showSection(pendingSection, document.querySelector(`nav button[onclick*="${pendingSection}"]`));
+      if (pendingSection === 'results') renderResults();
+      else if (pendingSection === 'log') renderLog();
+    } else {
+      document.getElementById('password-error').textContent = '❌ Неверный пароль';
+    }
+  }
+
+  document.getElementById('admin-password-input').addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') checkAdminPassword();
+  });
+
+  function openTests(btn) {
+    if (!currentTestUser) {
+      document.getElementById('name-modal').style.display = 'flex';
+      document.getElementById('test-user-name').value = '';
+      document.getElementById('name-error').textContent = '';
+      setTimeout(() => document.getElementById('test-user-name').focus(), 100);
+    } else {
+      showSection('tests', btn);
+      document.getElementById('test-user-display').textContent = '👤 ' + currentTestUser;
+      document.getElementById('test-user-banner').style.display = 'flex';
+    }
+  }
+
+  function confirmTestUser() {
+    const name = document.getElementById('test-user-name').value.trim();
+    if (!name) {
+      document.getElementById('name-error').textContent = '❌ Введите ваше ФИ';
+      return;
+    }
+    currentTestUser = name;
+    localStorage.setItem('currentTestUser', name);
+    closeModal('name-modal');
+    showSection('tests', document.querySelector(`nav button[onclick*="tests"]`));
+    document.getElementById('test-user-display').textContent = '👤 ' + currentTestUser;
+    document.getElementById('test-user-banner').style.display = 'flex';
+  }
+
+  document.getElementById('test-user-name').addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') confirmTestUser();
+  });
+
+  // ===== ЖУРНАЛ =====
+  function renderLog() {
+    const visits = JSON.parse(localStorage.getItem('visitLog') || '[]');
+    const log = document.getElementById('visit-log');
+    if (visits.length === 0) {
+      log.innerHTML = '<p style="text-align:center; color:var(--brown-light);">Пока нет записей</p>';
+      return;
+    }
+    log.innerHTML = visits.slice().reverse().map((v, i) =>
+      `<div class="visit-entry"><strong>${visits.length - i}.</strong> ${v.name} — <em>${v.time}</em></div>`
+    ).join('');
+  }
+
+  function clearLog() {
+    if (confirm('Очистить весь журнал посещений?')) {
+      localStorage.removeItem('visitLog');
+      renderLog();
+    }
+  }
+
+  // ===== РЕЗУЛЬТАТЫ =====
+  function renderResults() {
+    const results = JSON.parse(localStorage.getItem('testResults') || '[]');
+    const container = document.getElementById('results-container');
+    if (results.length === 0) {
+      container.innerHTML = '<div class="card" style="text-align:center; color:var(--brown-light);">Никто не проходил тесты</div>';
+      return;
+    }
+    
+    let html = '<table class="results-table"><thead><tr><th>Дата и время</th><th>ФИ учащегося</th><th>Тест</th><th>Результат</th><th>Процент</th></tr></thead><tbody>';
+    results.slice().reverse().forEach(r => {
+      let colorClass = r.percent >= 80 ? 'percent-good' : (r.percent >= 50 ? 'percent-mid' : 'percent-bad');
+      html += `<tr>
+        <td>${r.date}</td>
+        <td><strong>${r.user}</strong></td>
+        <td>${r.testName}</td>
+        <td>${r.score} из ${r.total}</td>
+        <td class="${colorClass}">${r.percent}%</td>
+      </tr>`;
+    });
+    html += '</tbody></table>';
+    html += '<button class="submit-test" style="margin-top:20px; background:#c0392b;" onclick="clearResults()">🗑️ Очистить все результаты</button>';
+    container.innerHTML = html;
+  }
+
+  function clearResults() {
+    if (confirm('Вы уверены, что хотите удалить ВСЕ результаты тестов? Это действие необратимо.')) {
+      localStorage.removeItem('testResults');
+      renderResults();
+    }
+  }
+
+  // ===== ЗАДАЧИ С ПОДСКАЗКАМИ =====
+  const hints = {
+    1: "Используй формулу M = F · l. Подставь F = 20 Н, l = 0,4 м.",
+    2: "По правилу равновесия: F₁ · l₁ = F₂ · l₂. Вырази F₂ = (F₁ · l₁) / l₂.",
+    3: "Сначала найди вес груза: P = m · g. Подвижный блок даёт выигрыш в силе в 2 раза, значит F = P / 2.",
+    4: "Обозначь расстояние от меньшего груза (2 кг) как x, тогда от большего (8 кг) — (1 − x). По правилу рычага: 2·x = 8·(1−x). Реши уравнение.",
+    5: "Тачка — рычаг второго рода. Сначала найди вес груза: P = m · g. Затем по правилу моментов: F · 1,2 = P · 0,3.",
+    6: "Рычаг в равновесии, если сумма моментов по часовой = сумме моментов против часовой. Найди общий момент по часовой (M₁ + M₂), затем F₃ = M_общ / l₃.",
+    7: "Если груз висит на n верёвках, то выигрыш в силе = n. Сначала найди вес груза P = m · g, затем F = P / n.",
+    8: "Сначала найди вес плиты: P = m · g. По правилу рычага: F · l₁ = P · l₂. Если l₁ = 8 · l₂, то F = P / 8.",
+    'sim': "Рычаг в равновесии, если M₁ = M₂. Найди M₁ = F₁·l₁, затем из равенства M₂ = M₁ найди F₂ = M₁ / l₂."
+  };
+
+  function checkTask(id, correct) {
+    const input = document.getElementById('task' + id + '-input');
+    const fb = document.getElementById('task' + id + '-feedback');
+    const hintBtn = document.getElementById('hint-btn-' + id);
+    const val = parseFloat(input.value);
+
+    if (isNaN(val)) {
+      fb.className = 'feedback wrong';
+      fb.textContent = '⚠️ Введите числовой ответ';
+      return;
+    }
+
+    taskAttempted[id] = true;
+
+    if (Math.abs(val - correct) < 0.01) {
+      fb.className = 'feedback correct';
+      fb.textContent = '✅ Верно! Молодец!';
+      if (hintBtn) hintBtn.disabled = true;
+    } else {
+      fb.className = 'feedback wrong';
+      fb.textContent = '❌ Неверно. Попробуй ещё раз или используй подсказку.';
+      if (hintBtn) hintBtn.disabled = false;
+    }
+  }
+
+  function showHint(id) {
+    if (!taskAttempted[id]) {
+      const fb = document.getElementById('task' + id + '-feedback');
+      fb.className = 'feedback info';
+      fb.textContent = '💬 Сначала попробуй решить сам — после первой проверки появится подсказка.';
+      return;
+    }
+    const fb = document.getElementById('task' + id + '-feedback');
+    fb.className = 'feedback hint';
+    fb.textContent = '💡 ' + hints[id];
+  }
+
+  function resetTask(id) {
+    document.getElementById('task' + id + '-input').value = '';
+    document.getElementById('task' + id + '-feedback').textContent = '';
+    document.getElementById('task' + id + '-feedback').className = 'feedback';
+    const hintBtn = document.getElementById('hint-btn-' + id);
+    if (hintBtn) hintBtn.disabled = true;
+    taskAttempted[id] = false;
+  }
+
+  // ===== СИМУЛЯЦИЯ РЫЧАГА =====
+  function updateLever() {
+    const f1 = parseFloat(document.getElementById('f1').value);
+    const l1 = parseFloat(document.getElementById('l1').value);
+    const f2 = parseFloat(document.getElementById('f2').value);
+    const l2 = parseFloat(document.getElementById('l2').value);
+
+    document.getElementById('f1-val').textContent = f1;
+    document.getElementById('f2-val').textContent = f2;
+    document.getElementById('l1-val').textContent = l1.toFixed(1);
+    document.getElementById('l2-val').textContent = l2.toFixed(1);
+
+    const m1 = f1 * l1;
+    const m2 = f2 * l2;
+
+    document.getElementById('l1-label').textContent = 'l₁ = ' + l1.toFixed(1) + ' м';
+    document.getElementById('l2-label').textContent = 'l₂ = ' + l2.toFixed(1) + ' м';
+
+    const beam = document.getElementById('lever-beam');
+    const diff = m1 - m2;
+    const maxTilt = 15;
+    let angle = 0;
+    if (Math.abs(diff) > 0.1) {
+      angle = Math.max(-maxTilt, Math.min(maxTilt, diff / 10));
+    }
+    beam.setAttribute('transform', `rotate(${angle} 350 200)`);
+
+    const status = document.getElementById('lever-status');
+    if (Math.abs(m1 - m2) < 0.1) {
+      status.className = 'sim-status balanced';
+      status.textContent = `M₁ = ${m1.toFixed(1)} Н·м, M₂ = ${m2.toFixed(1)} Н·м — РЫЧАГ В РАВНОВЕСИИ ✓`;
+    } else {
+      status.className = 'sim-status unbalanced';
+      status.textContent = `M₁ = ${m1.toFixed(1)} Н·м, M₂ = ${m2.toFixed(1)} Н·м — равновесия НЕТ`;
+    }
+  }
+
+       // ===== СИМУЛЯЦИЯ РЫЧАГА С ПЕРЕТАСКИВАНИЕМ (УВЕЛИЧЕННАЯ ВЕРСИЯ) =====
+  const LEVER_CENTER_X = 450;
+  const LEVER_Y = 290;
+  const TICK_STEP = 50; // пикселей между делениями (увеличено)
+  const g = 10;
+
+  let leverLoads = [];
+  let loadIdCounter = 0;
+  let draggingState = null;
+
+  function initDragLever() {
+    const svg = document.getElementById('drag-lever-svg');
+    if (!svg) return;
+
+    document.querySelectorAll('.warehouse-load').forEach(group => {
+      group.addEventListener('mousedown', startDragFromWarehouse);
+      group.addEventListener('touchstart', startDragFromWarehouseTouch, {passive: false});
+    });
+  }
+
+  function getSVGPoint(evt) {
+    const svg = document.getElementById('drag-lever-svg');
+    const pt = svg.createSVGPoint();
+    pt.x = evt.clientX;
+    pt.y = evt.clientY;
+    return pt.matrixTransform(svg.getScreenCTM().inverse());
+  }
+
+  function startDragFromWarehouse(evt) {
+    evt.preventDefault();
+    const mass = parseInt(evt.currentTarget.getAttribute('data-mass'));
+    const pt = getSVGPoint(evt);
+    beginDrag(mass, pt.x, pt.y);
+    document.addEventListener('mousemove', onDragMove);
+    document.addEventListener('mouseup', onDragEnd);
+  }
+
+  function startDragFromWarehouseTouch(evt) {
+    evt.preventDefault();
+    const touch = evt.touches[0];
+    const mass = parseInt(evt.currentTarget.getAttribute('data-mass'));
+    const pt = getSVGPoint(touch);
+    beginDrag(mass, pt.x, pt.y);
+    document.addEventListener('touchmove', onDragMoveTouch, {passive: false});
+    document.addEventListener('touchend', onDragEndTouch);
+  }
+
+  function beginDrag(mass, x, y) {
+    const draggingGroup = document.getElementById('dragging-load');
+    const colorMap = {10: '#A0826D', 20: '#8B6F47', 30: '#6B4423', 50: '#3E2A14'};
+    // Увеличенный размер перетаскиваемого груза
+    draggingGroup.innerHTML = `
+      <rect x="-65" y="-32" width="130" height="64" fill="${colorMap[mass]}" rx="10" stroke="#2a1a0c" stroke-width="3"/>
+      <text x="0" y="8" text-anchor="middle" fill="white" font-weight="bold" font-size="22">${mass} кг</text>
+    `;
+    draggingGroup.setAttribute('transform', `translate(${x}, ${y})`);
+    draggingGroup.style.display = 'block';
+    draggingState = {mass, offsetX: 0, offsetY: 0};
+  }
+
+  function onDragMove(evt) {
+    if (!draggingState) return;
+    const pt = getSVGPoint(evt);
+    document.getElementById('dragging-load').setAttribute('transform', `translate(${pt.x}, ${pt.y})`);
+  }
+
+  function onDragMoveTouch(evt) {
+    if (!draggingState) return;
+    evt.preventDefault();
+    const pt = getSVGPoint(evt.touches[0]);
+    document.getElementById('dragging-load').setAttribute('transform', `translate(${pt.x}, ${pt.y})`);
+  }
+
+  function onDragEnd(evt) {
+    document.removeEventListener('mousemove', onDragMove);
+    document.removeEventListener('mouseup', onDragEnd);
+    finishDrag(evt.clientX, evt.clientY);
+  }
+
+  function onDragEndTouch(evt) {
+    document.removeEventListener('touchmove', onDragMoveTouch);
+    document.removeEventListener('touchend', onDragEndTouch);
+    const touch = evt.changedTouches[0];
+    finishDrag(touch.clientX, touch.clientY);
+  }
+
+  function finishDrag(clientX, clientY) {
+    const svg = document.getElementById('drag-lever-svg');
+    const pt = svg.createSVGPoint();
+    pt.x = clientX;
+    pt.y = clientY;
+    const svgPt = pt.matrixTransform(svg.getScreenCTM().inverse());
+
+    // Проверяем, попали ли на рычаг (y между 250 и 330, x между 200 и 700)
+    const onLever = svgPt.y >= 250 && svgPt.y <= 330 && svgPt.x >= 200 && svgPt.x <= 700;
+
+    if (onLever) {
+      const offset = svgPt.x - LEVER_CENTER_X;
+      const tickIndex = Math.round(offset / TICK_STEP);
+      let position = tickIndex;
+      if (position === 0) position = offset > 0 ? 1 : -1;
+      if (position < -5) position = -5;
+      if (position > 5) position = 5;
+
+      addLoadToLever(draggingState.mass, position);
+    }
+
+    document.getElementById('dragging-load').style.display = 'none';
+    draggingState = null;
+  }
+
+  function addLoadToLever(mass, position) {
+    const group = document.getElementById('lever-loads-group');
+    const id = loadIdCounter++;
+    const colorMap = {10: '#A0826D', 20: '#8B6F47', 30: '#6B4423', 50: '#3E2A14'};
+    const x = LEVER_CENTER_X + position * TICK_STEP;
+
+    const el = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    el.setAttribute('class', 'lever-load-item');
+    el.setAttribute('transform', `translate(${x}, ${LEVER_Y - 40})`);
+    // Увеличенный размер груза на рычаге
+    el.innerHTML = `
+      <rect x="-32" y="-32" width="64" height="64" fill="${colorMap[mass]}" rx="8" stroke="#2a1a0c" stroke-width="3"/>
+      <text x="0" y="8" text-anchor="middle" fill="white" font-weight="bold" font-size="18">${mass}</text>
+      <title>Двойной клик — убрать груз</title>
+    `;
+    el.addEventListener('dblclick', () => removeLoadFromLever(id));
+    group.appendChild(el);
+
+    leverLoads.push({id, mass, position, element: el});
+    updateLeverBalance();
+  }
+
+  function removeLoadFromLever(id) {
+    const idx = leverLoads.findIndex(l => l.id === id);
+    if (idx !== -1) {
+      leverLoads[idx].element.remove();
+      leverLoads.splice(idx, 1);
+      updateLeverBalance();
+    }
+  }
+
+  function clearLeverLoads() {
+    leverLoads.forEach(l => l.element.remove());
+    leverLoads = [];
+    updateLeverBalance();
+  }
+
+  function updateLeverBalance() {
+    let mLeft = 0, mRight = 0;
+    leverLoads.forEach(l => {
+      const moment = l.mass * g * Math.abs(l.position);
+      if (l.position < 0) mLeft += moment;
+      else mRight += moment;
+    });
+
+    document.getElementById('drag-m1').textContent = mLeft + ' Н·м';
+    document.getElementById('drag-m2').textContent = mRight + ' Н·м';
+
+    const statusEl = document.getElementById('drag-status');
+    const diff = Math.abs(mLeft - mRight);
+
+    // Наклон рычага
+    const beam = document.getElementById('lever-beam-group');
+    let angle = 0;
+    if (diff > 0.1) {
+      const maxTilt = 18;
+      const maxMoment = 50 * 10 * 5; // макс момент = 2500
+      angle = ((mLeft - mRight) / maxMoment) * maxTilt * 3;
+      angle = Math.max(-maxTilt, Math.min(maxTilt, angle));
+    }
+    beam.setAttribute('transform', `rotate(${angle} ${LEVER_CENTER_X} ${LEVER_Y})`);
+
+    // Двигаем грузы вместе с рычагом
+    leverLoads.forEach(l => {
+      const x = LEVER_CENTER_X + l.position * TICK_STEP;
+      const rad = angle * Math.PI / 180;
+      const dx = x - LEVER_CENTER_X;
+      const dy = LEVER_Y - 40 - LEVER_Y;
+      const newX = LEVER_CENTER_X + dx * Math.cos(rad) - dy * Math.sin(rad);
+      const newY = LEVER_Y + dx * Math.sin(rad) + dy * Math.cos(rad);
+      l.element.setAttribute('transform', `translate(${newX}, ${newY}) rotate(${-angle})`);
+    });
+
+    if (diff < 0.1 && leverLoads.length > 0) {
+      statusEl.textContent = 'РАВНОВЕСИЕ ✓';
+      statusEl.style.color = '#155724';
+    } else if (leverLoads.length === 0) {
+      statusEl.textContent = 'Пусто';
+      statusEl.style.color = '#8B6F47';
+    } else {
+      const side = mLeft > mRight ? 'наклон ВЛЕВО ↺' : 'наклон ВПРАВО ↻';
+      statusEl.textContent = side;
+      statusEl.style.color = '#c0392b';
+    }
+  }
+
+  // Инициализация при загрузке
+  window.addEventListener('DOMContentLoaded', () => {
+    initDragLever();
+  });
+  // ===== ТЕСТЫ =====
+  const testAnswers = {
+    1: { t1q1: 'b', t1q2: 'b', t1q3: 'c', t1q4: 'c', t1q5: 'a' },
+    2: { t2q1: 'b', t2q2: 'c', t2q3: 'a', t2q4: 'b', t2q5: 'a' },
+    3: { t3q1: 'c', t3q2: 'c', t3q3: 'b', t3q4: 'b', t3q5: 'c' }
+  };
+
+  function checkTest(num) {
+    const answers = testAnswers[num];
+    let correct = 0;
+    const total = Object.keys(answers).length;
+
+    for (const q in answers) {
+      const selected = document.querySelector(`input[name="${q}"]:checked`);
+      if (selected && selected.value === answers[q]) correct++;
+    }
+
+    const result = document.getElementById(`test${num}-result`);
+    const percent = Math.round((correct / total) * 100);
+    let msg = `Результат: ${correct} из ${total} (${percent}%) — `;
+    if (percent === 100) msg += '🏆 Отлично!';
+    else if (percent >= 70) msg += '👍 Хороший результат!';
+    else if (percent >= 50) msg += '📖 Повтори теорию.';
+    else msg += '📚 Нужно ещё поработать.';
+
+    result.textContent = msg;
+    result.style.background = percent >= 70 ? '#d4edda' : (percent >= 50 ? '#fff3cd' : '#f8d7da');
+    result.style.color = percent >= 70 ? '#155724' : (percent >= 50 ? '#856404' : '#721c24');
+
+    // Сохранение результата
+    const testResult = {
+      user: currentTestUser || 'Аноним',
+      testName: `Тест ${num}`,
+      score: correct,
+      total: total,
+      percent: percent,
+      date: new Date().toLocaleString('ru-RU')
+    };
+    const results = JSON.parse(localStorage.getItem('testResults') || '[]');
+    results.push(testResult);
+    localStorage.setItem('testResults', JSON.stringify(results));
+  }
+</script>
+
+</body>
+</html>
